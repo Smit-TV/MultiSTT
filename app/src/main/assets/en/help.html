@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+
+            --bg: #ffffff;
+            --surface: #f5f5f5;
+            --text: #202124;
+            --secondary: #5f6368;
+            --accent: #1976d2;
+            --border: #dddddd;
+            --warning: #fff3cd;
+            --warning-border: #ffcc80;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --surface: #1e1e1e;
+                --text: #e8eaed;
+                --secondary: #b0b3b8;
+                --accent: #64b5f6;
+                --border: #3a3a3a;
+                --warning: #3d3115;
+                --warning-border: #8d6e00;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: system-ui, sans-serif;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: .25em;
+            font-size: 2rem;
+        }
+
+        h2, h3, h4 {
+            margin-top: 2em;
+            margin-bottom: .5em;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: .3em;
+        }
+
+        p {
+            margin: 1em 0;
+        }
+
+        ul, ol {
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin: .5em 0;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background: var(--warning);
+            border-left: 5px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .warning h3 {
+            border: none;
+            margin-top: 0;
+        }
+
+        code {
+            background: rgba(127,127,127,.15);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Help</h1>
+
+<p>
+    This guide will help you use the application and become familiar with all of
+    its features.
+</p>
+
+<p>
+    For convenience, the information is divided into several sections.
+</p>
+
+<div class="card">
+    <h2>Contents</h2>
+
+    <ul>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#adding_own_modules">Adding Your Own Models</a></li>
+    </ul>
+</div>
+
+<h2 id="usage">Usage</h2>
+
+<p>
+    Before using voice input, you must import at least one speech recognition
+    model.
+</p>
+
+<p>
+    To import a model:
+</p>
+
+<ol>
+    <li>Open the application's main menu.</li>
+    <li>Select <b>"Import"</b>.</li>
+    <li>Choose a ZIP archive containing at least one model.</li>
+</ol>
+
+<p>
+    After the import is complete, select the desired model from the list.
+</p>
+
+<p>
+    The application requires permission to access the microphone in order to
+    function.
+</p>
+
+<h2 id="adding_own_modules">Adding Your Own Models</h2>
+
+<p>
+    To create your own model package, you will need:
+</p>
+
+<ol>
+    <li>A Microsoft Azure Embedded Speech model.</li>
+    <li>A license or license key for that model.</li>
+</ol>
+
+<p>
+    Create a file named <code>license.txt</code> in the model directory, then
+    compress the entire folder into a ZIP archive and import it through the
+    application.
+</p>
+
+<div class="warning">
+    <h3>⚠ Warning</h3>
+
+    <p>
+        This application is provided "as is", without any warranties of any
+        kind. Use it only for lawful and peaceful purposes.
+    </p>
+
+    <p>
+        When using Microsoft Azure Embedded Speech models, you must comply with
+        the terms of their license.
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справка</title>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+
+            --bg: #ffffff;
+            --surface: #f5f5f5;
+            --text: #202124;
+            --secondary: #5f6368;
+            --accent: #1976d2;
+            --border: #dddddd;
+            --warning: #fff3cd;
+            --warning-border: #ffcc80;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --surface: #1e1e1e;
+                --text: #e8eaed;
+                --secondary: #b0b3b8;
+                --accent: #64b5f6;
+                --border: #3a3a3a;
+                --warning: #3d3115;
+                --warning-border: #8d6e00;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: system-ui, sans-serif;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: .25em;
+            font-size: 2rem;
+        }
+
+        h2, h3, h4 {
+            margin-top: 2em;
+            margin-bottom: .5em;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: .3em;
+        }
+
+        p {
+            margin: 1em 0;
+        }
+
+        ul, ol {
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin: .5em 0;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background: var(--warning);
+            border-left: 5px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .warning h3 {
+            border: none;
+            margin-top: 0;
+        }
+
+        code {
+            background: rgba(127,127,127,.15);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Справка</h1>
+
+<p>
+    Эта справка поможет вам использовать приложение и ознакомиться со всеми его
+    возможностями.
+</p>
+
+<p>
+    Для удобства информация разделена на несколько разделов.
+</p>
+
+<div class="card">
+    <h2>Содержание</h2>
+
+    <ul>
+        <li><a href="#usage">Использование</a></li>
+        <li><a href="#adding_own_modules">Добавление собственных моделей</a></li>
+    </ul>
+</div>
+
+<h2 id="usage">Использование</h2>
+
+<p>
+    Перед использованием голосового ввода необходимо импортировать
+    как минимум одну модель распознавания речи.
+</p>
+
+<p>
+    Для импорта модели выполните следующие действия:
+</p>
+
+<ol>
+    <li>Откройте главное меню приложения.</li>
+    <li>Выберите пункт <b>«Импортировать»</b>.</li>
+    <li>Укажите ZIP-архив, содержащий хотя бы одну модель.</li>
+</ol>
+
+<p>
+    После завершения импорта выберите нужную модель из списка.
+</p>
+
+<p>
+    Для работы приложения необходимо предоставить разрешение на использование
+    микрофона.
+</p>
+
+<h2 id="adding_own_modules">Добавление собственных моделей</h2>
+
+<p>
+    Для создания собственного пакета модели необходимы:
+</p>
+
+<ol>
+    <li>Модель Microsoft Azure Embedded Speech.</li>
+    <li>Лицензия или лицензионный ключ для данной модели.</li>
+</ol>
+
+<p>
+    Создайте файл <code>license.txt</code> в каталоге модели, затем
+    заархивируйте всю папку в ZIP-архив и импортируйте его через приложение.
+</p>
+
+<div class="warning">
+    <h3>⚠ Предупреждение</h3>
+
+    <p>
+        Приложение предоставляется «как есть», без каких-либо гарантий.
+        Используйте его только в законных и мирных целях.
+    </p>
+
+    <p>
+        При использовании моделей Microsoft Azure Embedded Speech обязательно
+        соблюдайте условия их лицензии.
+    </p>
+</div>
+
+</body>
+</html>

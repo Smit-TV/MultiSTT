@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory
+    android:title="@string/speech_recognition">
+    <SwitchPreference
+        android:title="@string/use_detailed_output_format"
+        android:summary="@string/detailed_output_format_includes_characters"
+        android:key="use_detailed_output_format"
+        android:defaultValue="true"/>
+    <SwitchPreference
+        android:key="automaticly_stop_continuous_speech_recognition"
+        android:title="@string/automaticly_stop_continuous_speech_recognition"
+        android:defaultValue="false"/>
+    <SwitchPreference
+        android:key="use_only_selected_models"
+        android:title="@string/use_only_selected_models"
+        android:defaultValue="true"/>
+
+</PreferenceCategory>
+</androidx.preference.PreferenceScreen>

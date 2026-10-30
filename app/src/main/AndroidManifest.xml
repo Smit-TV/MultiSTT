@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService"/>
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MultiSTT">
+
+        <service
+            android:label="@string/app_name"
+            android:name=".MultiSTTRecognitionService"
+            android:exported="true"
+            android:enabled="true"
+            android:permission="android.permission.BIND_SPEECH_RECOGNITION_SERVICE">
+            <intent-filter>
+                <action android:name="android.speech.RecognitionService"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.speech"
+                android:resource="@xml/recognition_service"/>
+        </service>
+
+        <receiver android:name=".STTLanguageDetailsReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.speech.action.GET_LANGUAGE_DETAILS"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".MultiSTTService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/inputmethod" />
+        </service>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MultiSTT">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="content"
+                    android:mimeType="application/zip" />
+
+                <data
+                    android:scheme="content"
+                    android:mimeType="application/x-zip-compressed" />
+
+                <data
+                    android:scheme="file"
+                    android:mimeType="application/zip" />
+
+                <data
+                    android:scheme="file"
+                    android:mimeType="application/x-zip-compressed" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/Theme.MultiSTT" />
+        <activity
+            android:name=".HelpActivity"
+            android:theme="@style/Theme.MultiSTT" />
+        <activity
+            android:name=".ViewLogActivity"
+            android:theme="@style/Theme.MultiSTT" />
+        <activity
+            android:name=".EnginesActivity"
+            android:theme="@style/Theme.MultiSTT"
+/>
+        <activity android:name=".ActionRecognizeSpeechActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.speech.action.RECOGNIZE_SPEECH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

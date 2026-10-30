@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MultiSTT" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorControlNormal">?attr/colorOnSurface</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="dialog" parent="Theme.Material3.DayNight.Dialog.Alert" />
+</resources>

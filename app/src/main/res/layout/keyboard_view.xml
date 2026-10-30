@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Theme.MaterialComponents.DayNight"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:text="@string/app_name"
+            android:textSize="34sp" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/settings"
+            android:id="@+id/open_settings"
+            android:src="@drawable/settings_24dp_e3e3e3_fill0_wght400_grad0_opsz24"
+            android:scaleType="centerInside"
+            android:tint="?android:attr/textColorPrimary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/keyboard"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/keyboard"
+            android:scaleType="centerInside"
+            android:src="@drawable/keyboard_24dp_e3e3e3_fill0_wght400_grad0_opsz24"
+            android:tint="?android:attr/textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/speak"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/speak"
+            android:scaleType="centerInside"
+            android:src="@drawable/mic_24dp_e3e3e3_fill0_wght400_grad0_opsz24"
+            android:tint="?android:attr/textColorPrimary" />
+
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/enter" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/current_reco_engine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/current_engine"
+            android:textSize="28sp"/>
+        <TextView
+            android:id="@+id/current_engine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <ImageButton
+            android:id="@+id/previous_recognition_language"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/previous_recognition_language"
+            android:scaleType="centerInside"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/current_recognition_language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textSize="28sp" />
+
+        <ImageButton
+            android:id="@+id/next_recognition_language"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/next_recognition_language"
+            android:scaleType="centerInside"
+            android:src="@android:drawable/ic_media_next"
+            android:tint="?android:attr/textColorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>

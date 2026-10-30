@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/add"/>
+
+<item
+    android:id="@+id/action_export"
+    android:icon="@drawable/outline_ios_share_24"
+    android:title="@string/export_all"/>
+</menu>
