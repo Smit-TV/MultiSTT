@@ -29,7 +29,7 @@ class ModelConfigParser(
     private val config =  Ini()
 
     init {
-//        config.config.isEscape = false
+        config.config.isEscape = false
 //        config.config.isEscapeNewline = true
         config.config.isMultiOption = true
 
@@ -107,6 +107,7 @@ if (modelFolder.isFile) {
 
     fun getModelConfig(model: Model): Ini {
         val ini = Ini()
+        ini.config.isEscape = false
 
         val section = ini.add(getModelSectionNameFor(model))
         section.add("name", model.name)
@@ -121,6 +122,8 @@ if (modelFolder.isFile) {
 
     fun getModelsConfig(vendor: String): Ini {
         val ini = Ini()
+        ini.config.isEscape = false
+
         val models = getModelsByVendor(vendor)
 
         for (model in models) {
@@ -254,6 +257,7 @@ if (modelFolder.isFile) {
     // returns quontity of added models
     fun addModelsFromConfig(cfg: String): Int {
         val tmpIni = Ini(StringReader(cfg))
+        tmpIni.config.isEscape = false
 
         for ((sectionName, sec) in tmpIni) {
             if (config.containsKey(sectionName)) {
@@ -275,6 +279,8 @@ if (modelFolder.isFile) {
 
     fun getDuplicates(cfg: String): List<String> {
         val ini = Ini(StringReader(cfg))
+        ini.config.isEscape = false
+
         val duplicates = mutableListOf<String>()
 
         for ((key, section) in ini) {
