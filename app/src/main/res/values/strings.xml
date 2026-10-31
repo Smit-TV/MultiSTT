@@ -87,4 +87,5 @@
     <string name="current_engine">Recognition engine:</string>
     <string name="speak_test">Speak</string>
     <string name="speak_once">Speak once</string>
+    <string name="telegram_resources_channel">Resources channel</string>
 </resources>

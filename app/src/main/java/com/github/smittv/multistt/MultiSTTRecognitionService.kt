@@ -81,16 +81,18 @@ class MultiSTTRecognitionService : RecognitionService() {
             return
         }
 
+        val result = TextProcessor(this, results.result ?: "").toString()
+
         speechRecognitionCallback?.results(Bundle().apply {
             putStringArrayList(
                 SpeechRecognizer.RESULTS_RECOGNITION,
-                arrayListOf(results.result)
+                arrayListOf(result)
             )
         })
 
         speechRecognitionCallback?.endOfSpeech()
 
-        if (results.result?.isNotEmpty() == true) {
+        if (result?.isNotEmpty() == true) {
             soundManager.playSuccessfulRecognitionSound()
         } else {
             soundManager.playFailToRecognizeSound()

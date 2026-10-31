@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Справка</title>
+
+    <title>Справка — MultiSTT</title>
 
     <style>
         :root {
             color-scheme: light dark;
 
             --bg: #ffffff;
-            --surface: #f5f5f5;
+            --surface: #f5f7fa;
             --text: #202124;
             --secondary: #5f6368;
-            --accent: #1976d2;
-            --border: #dddddd;
-            --warning: #fff3cd;
-            --warning-border: #ffcc80;
+            --accent: #1565c0;
+            --border: #dadce0;
+            --warning-bg: #fff8e1;
+            --warning-border: #f9a825;
+            --info-bg: #e3f2fd;
+            --info-border: #1976d2;
+            --code-bg: rgba(127, 127, 127, 0.15);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -25,10 +29,13 @@
                 --surface: #1e1e1e;
                 --text: #e8eaed;
                 --secondary: #b0b3b8;
-                --accent: #64b5f6;
+                --accent: #90caf9;
                 --border: #3a3a3a;
-                --warning: #3d3115;
-                --warning-border: #8d6e00;
+                --warning-bg: #332b16;
+                --warning-border: #ffca28;
+                --info-bg: #152a3a;
+                --info-border: #64b5f6;
+                --code-bg: rgba(255, 255, 255, 0.1);
             }
         }
 
@@ -36,158 +43,404 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+
         body {
-            margin: 0;
+            max-width: 900px;
+            margin: 0 auto;
             padding: 24px;
-            font-family: system-ui, sans-serif;
-            line-height: 1.65;
+
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            font-size: 16px;
+            line-height: 1.7;
+
             background: var(--bg);
             color: var(--text);
-            max-width: 900px;
-            margin-inline: auto;
+        }
+
+        header {
+            margin-bottom: 32px;
         }
 
         h1 {
-            margin-top: 0;
-            margin-bottom: .25em;
+            margin: 0 0 12px;
             font-size: 2rem;
+            line-height: 1.3;
         }
 
-        h2, h3, h4 {
-            margin-top: 2em;
-            margin-bottom: .5em;
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+
+            font-size: 1.5rem;
+
             border-bottom: 1px solid var(--border);
-            padding-bottom: .3em;
+        }
+
+        h3 {
+            margin-top: 24px;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
         }
 
         p {
-            margin: 1em 0;
+            margin: 16px 0;
         }
 
-        ul, ol {
-            padding-left: 1.5em;
+        ul,
+        ol {
+            padding-left: 28px;
         }
 
         li {
-            margin: .5em 0;
+            margin: 8px 0;
+            padding-left: 4px;
         }
 
         a {
             color: var(--accent);
-            text-decoration: none;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         a:hover {
-            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.05rem;
         }
 
         .card {
+            margin: 24px 0;
+            padding: 20px;
+
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            border: none;
+        }
+
+        .info {
+            margin: 24px 0;
+            padding: 16px 20px;
+
+            background: var(--info-bg);
+            border-left: 5px solid var(--info-border);
+            border-radius: 8px;
         }
 
         .warning {
-            background: var(--warning);
+            margin: 32px 0;
+            padding: 20px;
+
+            background: var(--warning-bg);
             border-left: 5px solid var(--warning-border);
             border-radius: 8px;
-            padding: 16px;
-            margin-top: 24px;
         }
 
         .warning h3 {
-            border: none;
             margin-top: 0;
         }
 
         code {
-            background: rgba(127,127,127,.15);
-            padding: 2px 5px;
+            padding: 3px 6px;
+            background: var(--code-bg);
             border-radius: 4px;
+
             font-family: monospace;
+            font-size: 0.9em;
+
+            overflow-wrap: anywhere;
+        }
+
+        .path {
+            display: block;
+            margin: 16px 0;
+            padding: 14px;
+
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        footer {
+            margin-top: 48px;
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .card,
+            .warning,
+            .info {
+                padding: 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>Справка</h1>
+<header>
+    <h1>Справка MultiSTT</h1>
 
-<p>
-    Эта справка поможет вам использовать приложение и ознакомиться со всеми его
-    возможностями.
-</p>
+    <p class="subtitle">
+        Руководство пользователя приложения MultiSTT —
+        многоязычного голосового ввода.
+    </p>
 
-<p>
-    Для удобства информация разделена на несколько разделов.
-</p>
+    <p>
+        В этом руководстве описаны основные возможности приложения,
+        порядок использования голосового ввода и способы добавления
+        собственных моделей распознавания речи.
+    </p>
+</header>
 
-<div class="card">
+<nav class="card" aria-label="Содержание">
     <h2>Содержание</h2>
 
-    <ul>
-        <li><a href="#usage">Использование</a></li>
-        <li><a href="#adding_own_modules">Добавление собственных моделей</a></li>
-    </ul>
-</div>
+    <ol>
+        <li>
+            <a href="#usage">Начало работы</a>
+        </li>
 
-<h2 id="usage">Использование</h2>
+        <li>
+            <a href="#import_models">Импорт моделей</a>
+        </li>
 
-<p>
-    Перед использованием голосового ввода необходимо импортировать
-    как минимум одну модель распознавания речи.
-</p>
+        <li>
+            <a href="#voice_input">Использование голосового ввода</a>
+        </li>
 
-<p>
-    Для импорта модели выполните следующие действия:
-</p>
+        <li>
+            <a href="#adding_own_models">Добавление собственных моделей Microsoft</a>
+        </li>
 
-<ol>
-    <li>Откройте главное меню приложения.</li>
-    <li>Выберите пункт <b>«Импортировать»</b>.</li>
-    <li>Укажите ZIP-архив, содержащий хотя бы одну модель.</li>
-</ol>
+        <li>
+            <a href="#license">Лицензирование и ограничения</a>
+        </li>
+    </ol>
+</nav>
 
-<p>
-    После завершения импорта выберите нужную модель из списка.
-</p>
+<main>
 
-<p>
-    Для работы приложения необходимо предоставить разрешение на использование
-    микрофона.
-</p>
+    <section id="usage">
+        <h2>1. Начало работы</h2>
 
-<h2 id="adding_own_modules">Добавление собственных моделей</h2>
+        <p>
+            Перед использованием голосового ввода необходимо
+            импортировать хотя бы одну модель распознавания речи.
+        </p>
 
-<p>
-    Для создания собственного пакета модели необходимы:
-</p>
+        <p>
+            Также приложению требуется разрешение на использование
+            микрофона. Без него запись и распознавание речи
+            будут недоступны.
+        </p>
+    </section>
 
-<ol>
-    <li>Модель Microsoft Azure Embedded Speech.</li>
-    <li>Лицензия или лицензионный ключ для данной модели.</li>
-</ol>
+    <section id="import_models">
+        <h2>2. Импорт моделей</h2>
 
-<p>
-    Создайте файл <code>license.txt</code> в каталоге модели, затем
-    заархивируйте всю папку в ZIP-архив и импортируйте его через приложение.
-</p>
+        <p>
+            Для импорта модели выполните следующие действия:
+        </p>
 
-<div class="warning">
-    <h3>⚠ Предупреждение</h3>
+        <ol>
+            <li>Откройте главное меню приложения.</li>
+            <li>Выберите пункт «Импортировать модель».</li>
+            <li>Укажите ZIP-архив, содержащий модели распознавания речи.</li>
+            <li>Дождитесь завершения распаковки и импорта.</li>
+        </ol>
 
+        <p>
+            После успешного импорта модели появятся в списке.
+            Выберите нужную модель, чтобы использовать её
+            для распознавания речи.
+        </p>
+
+        <div class="info">
+            <strong>Примечание:</strong>
+            Один ZIP-архив может содержать несколько моделей
+            и движков распознавания.
+        </div>
+    </section>
+
+    <section id="voice_input">
+        <h2>3. Использование голосового ввода</h2>
+
+        <p>
+            После импорта модели и предоставления необходимых разрешений
+            можно использовать голосовой ввод.
+        </p>
+
+        <h3>Однократное распознавание</h3>
+
+        <p>
+            Нажмите кнопку голосового ввода, произнесите нужный текст
+            и дождитесь завершения распознавания.
+        </p>
+
+        <h3>Непрерывное распознавание</h3>
+
+        <p>
+            Для включения непрерывного распознавания
+            нажмите и удерживайте кнопку голосового ввода.
+            Приложение будет продолжать распознавание речи,
+            пока режим не будет остановлен.
+        </p>
+
+        <h3>Переключение языков</h3>
+
+        <p>
+            Для переключения между языками распознавания
+            используйте соответствующие команды:
+        </p>
+
+        <ul>
+            <li>Следующий язык распознавания.</li>
+            <li>Предыдущий язык распознавания.</li>
+        </ul>
+    </section>
+
+    <section id="adding_own_models">
+        <h2>4. Добавление собственных моделей Microsoft</h2>
+
+        <p>
+            MultiSTT позволяет добавлять собственные модели
+            Microsoft Azure Embedded Speech.
+        </p>
+
+        <h3>Необходимые компоненты</h3>
+
+        <p>Для добавления модели потребуются:</p>
+
+        <ol>
+            <li>Файлы модели Microsoft Azure Embedded Speech.</li>
+            <li>Соответствующий лицензионный ключ или лицензия.</li>
+        </ol>
+
+        <h3>Расположение файлов модели</h3>
+
+        <p>
+            Поместите файлы модели в следующую директорию:
+        </p>
+
+        <code class="path">/storage/emulated/0/Android/data/com.github.smittv.multistt/files/microsoft</code>
+
+        <h3>Добавление модели в приложение</h3>
+
+        <ol>
+            <li>Откройте навигационное меню приложения.</li>
+            <li>Перейдите в раздел «Движки распознавания».</li>
+            <li>Найдите движок Microsoft Offline.</li>
+            <li>Нажмите кнопку «Добавить» напротив него.</li>
+            <li>
+                В открывшемся окне заполните необходимые поля:
+                <ul>
+                    <li>
+                        <strong>Название:</strong>
+                        произвольное название модели.
+                    </li>
+                    <li>
+                        <strong>Папка:</strong>
+                        название директории, содержащей файлы модели.
+                    </li>
+                    <li>
+                        <strong>Локаль:</strong>
+                        язык и регион модели, например <code>en-US</code>
+                        или <code>ru-RU</code>.
+                    </li>
+                    <li>
+                        <strong>Параметры:</strong>
+                        лицензионный ключ или другие параметры,
+                        необходимые для работы модели.
+                    </li>
+                </ul>
+            </li>
+            <li>Подтвердите добавление модели.</li>
+        </ol>
+
+        <p>
+            После успешного добавления модель появится в списке
+            доступных моделей и будет готова к использованию.
+        </p>
+    </section>
+
+    <section id="license">
+        <h2>5. Лицензирование и ограничения</h2>
+
+        <div class="warning">
+            <h3>Предупреждение</h3>
+
+            <p>
+                Приложение предоставляется «как есть»,
+                без каких-либо гарантий.
+            </p>
+
+            <p>
+                При использовании моделей Microsoft Azure Embedded Speech
+                обязательно соблюдайте условия соответствующей лицензии.
+                Убедитесь, что у вас есть необходимые права
+                на использование файлов моделей и лицензионных ключей.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
     <p>
-        Приложение предоставляется «как есть», без каких-либо гарантий.
-        Используйте его только в законных и мирных целях.
+        MultiSTT — многоязычный голосовой ввод.
     </p>
-
-    <p>
-        При использовании моделей Microsoft Azure Embedded Speech обязательно
-        соблюдайте условия их лицензии.
-    </p>
-</div>
+</footer>
 
 </body>
 </html>

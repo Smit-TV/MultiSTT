@@ -428,6 +428,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.help -> openHelp()
                 R.id.view_log -> openViewLog()
                 R.id.engines -> openEngines()
+                R.id.telegram_resources_channel -> openResourcesChannel()
                 else -> null
             }
             drawerLayout.closeDrawers()
@@ -451,6 +452,14 @@ class MainActivity : AppCompatActivity() {
     fun openSettings() {
         startActivity(Intent(this, SettingsActivity::class.java))
     }
+
+    fun openResourcesChannel() {
+        startActivity(
+            Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://t.me/multi_stt_resources"))
+        )
+    }
+
     fun openTelegramChannel() {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(("https://t.me/smit_tv_official"))))
     }
